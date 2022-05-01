@@ -21,7 +21,12 @@ contract Transactions{
   //payable - terá uma taxa de gás
   //memory - não vai pra blockchain, especie de cache
   function addToBlockchain(address payable receiver, uint amount, string memory message, string memory keyword) public {
-    
+    transactionsCount += 1;
+    // message msg é uma variável global, que é em relação a quem chaam o contrato ( que somos nós )
+    // Como todas as transações/deployments estão dentro de um bloco, nós possuimos um objeto block e conseguimos nosso timesstamp
+    transactions.push(TransferStruct(msg.sender, receiver, amount, message, block.timestamp, keyword));
+    // realizando transação
+    emit Transfer(msg.sender, receiver, amount, message, block.timestamp, keyword);
   }
 
 }
