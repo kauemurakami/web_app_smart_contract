@@ -29,6 +29,17 @@ contract Transactions{
     emit Transfer(msg.sender, receiver, amount, message, block.timestamp, keyword);
   }
 
+  //mostrar todas as transferências
+  //view não vai alterar nossas variáveis de estado
+  function getAllTransactions() public view returns(TransferStruct[] memory){
+    return transactions;
+  }
+
+  //quantas transações realizou
+  function getTransactionCount() public view returns(uint256){
+    return transactionsCount;
+  }
+
 }
 
 
