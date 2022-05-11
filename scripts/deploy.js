@@ -17,11 +17,13 @@ const main = async () => {
   const transactionsContract = await transactionsFactory.deploy()
 
   await transactionsContract.deployed()
-  let a = await transactionsContract.address
+  console.log(await transactionsContract.deployed().address);
+  let a =  transactionsContract.address
   console.log(a)
-  console.log("Transactions deployed to: ,", transactionsContract.address)
+  console.log("Transactions deployed to: ," + transactionsContract.address)
   console.log(transactionsContract.address)
 }
+
 const runMain = async () => {
   try{
     await main()
